@@ -1,0 +1,22 @@
+{
+  "name": "react-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelchenn/React-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelchenn/React-Project/issues"
+  },
+  "homepage": "https://github.com/kelchenn/React-Project#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
