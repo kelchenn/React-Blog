@@ -1,8 +1,11 @@
 import React, {useState} from "react";
+import {BrowserRouter, Routes, Route, Redirect, useParams} from "react-router-dom";
+
 import "./App.css";
 import Header from "./components/Header";
 import Posts from "./components/Posts";
-import {BrowserRouter as Router, Routes, Route, Redirect} from "react-router-dom";
+import Post from "./components/Post";
+import NotFound from "./components/NotFound";
 
 const App = (props) => {
   const [posts, setPosts] = useState([
@@ -27,16 +30,17 @@ const App = (props) => {
   ]);
 
   return (
-    <Router> 
+    <BrowserRouter> 
       <div className = "App"> 
         <Header/>
         <Routes>
           {/* check if we are on the main route of the site (locally http://localhost:3000/),
           if we are, call <Posts/> component */}
-          <Route path = "/" element = {<Posts posts = {posts}/>} /> 
+          <Route exact = {true} path = "/" element = {<Posts posts = {posts}/>} /> 
+          <Route path = "*" element = {<NotFound/>}/>
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 
