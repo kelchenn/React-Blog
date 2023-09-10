@@ -10,6 +10,7 @@ const PostWrapper = ({ posts }) => {
     const { id } = useParams();
 
     useEffect(() => {
+        // find the corresponding post using the url param
         const post = posts.find(item => item.slug === id);
 
         if (post) {
@@ -24,7 +25,5 @@ const PostWrapper = ({ posts }) => {
         </div>
     );
 };
-
-
 
 export default PostWrapper;

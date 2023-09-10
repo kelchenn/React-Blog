@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Posts from "./components/Posts";
 import PostWrapper from "./components/PostWrapper";
+import PostForm from "./components/PostForm";
 import NotFound from "./components/NotFound";
 
 const App = (props) => {
@@ -36,11 +37,14 @@ const App = (props) => {
         <Routes>
           {/* check if we are on the main route of the site (locally http://localhost:3000/),
           if we are, call <Posts/> component */}
-          <Route exact = { true } path = "/" element = {<Posts posts = { posts }/>} />;
+          <Route exact = { true } path = "/" element = {<Posts posts = { posts }/>} />
           <Route 
             path = "/post/:id" 
             element = {<PostWrapper posts = { posts }/>}
-          />;
+          />
+          <Route
+            exact = {true} path = "/new" element = {<PostForm/>}>
+          </Route>
           <Route path = "*" element = {<NotFound/>}/>
         </Routes>
       </div>
