@@ -17,7 +17,7 @@ const PostWrapper = ({ posts }) => {
             setShowPost(true);
             setPostId(post);
         }
-    }, [posts, id]);
+    }, []);
 
     return (
         <div>

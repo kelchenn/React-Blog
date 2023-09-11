@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Redirect, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/Header";
@@ -9,26 +9,15 @@ import PostForm from "./components/PostForm";
 import NotFound from "./components/NotFound";
 
 const App = (props) => {
-  const [posts, setPosts] = useState([
-    { 
-      id: 1,
-      slug: "hello-react",
-      title: "Hello React",
-      content: "Hello",
-    },
-    {
-      id: 2,
-      slug: "content-here",
-      title: "Content here",
-      content: "Hi",
-    },
-    {
-      id: 3,
-      slug: "hello-world",
-      title: "Hello world",
-      content: "Hey",
-    }
-  ]);
+  const [posts, setPosts] = useState([]);
+
+  const addNewPost = (post) => {
+    post.id = posts.length + 1;
+    post.slug = encodeURIComponent(
+      post.title.toLowerCase().split(" ").join("-")
+    );
+    setPosts([...posts, post]);
+  };
 
   return (
     <BrowserRouter> 
@@ -43,9 +32,9 @@ const App = (props) => {
             element = {<PostWrapper posts = { posts }/>}
           />
           <Route
-            exact = {true} path = "/new" element = {<PostForm/>}>
+            exact = { true } path = "/new" element = {<PostForm addNewPost = { addNewPost }/>}>
           </Route>
-          <Route path = "*" element = {<NotFound/>}/>
+          <Route path = "*" element = { <NotFound/> }/>
         </Routes>
       </div>
     </BrowserRouter>
