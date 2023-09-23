@@ -43,9 +43,7 @@ const PostForm = ({ addNewPost }) => {
             <Quill
                 onChange={(content, delta, source, editor) => { 
                     
-                setContent(editor.getText()); // editor.getContents() for formatting
-                //console.log(editor.getContents());
-                //console.log(editor.getText());
+                setContent(editor.getContents()); 
                 }}
             />
             <p>

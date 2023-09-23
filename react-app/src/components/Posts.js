@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Posts = ({ posts }) => {
+  
+
   return (
     <article className="posts container">
       <h1>Posts</h1>
