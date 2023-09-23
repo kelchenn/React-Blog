@@ -7,9 +7,11 @@ import Posts from "./components/Posts";
 import PostWrapper from "./components/PostWrapper";
 import PostForm from "./components/PostForm";
 import NotFound from "./components/NotFound";
+import Message from "./components/Message";
 
 const App = (props) => {
   const [posts, setPosts] = useState([]);
+  const [message, setMessage] = useState(null);
 
   const addNewPost = (post) => {
     post.id = posts.length + 1;
@@ -17,12 +19,21 @@ const App = (props) => {
       post.title.toLowerCase().split(" ").join("-")
     );
     setPosts([...posts, post]);
+    setFlashMessage(`saved`);
+  };
+
+  const setFlashMessage = (message) => {
+    setMessage(message);
+    setTimeout(() => {
+      setMessage(null);
+    }, 1500);
   };
 
   return (
     <BrowserRouter> 
       <div className = "App"> 
         <Header/>
+        {message && <Message type = { message } />}
         <Routes>
           {/* check if we are on the main route of the site (locally http://localhost:3000/),
           if we are, call <Posts/> component */}
