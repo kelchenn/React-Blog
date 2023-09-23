@@ -1,5 +1,5 @@
 {
-  "name": "react-project",
+  "name": "react-blog",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kelchenn/React-Project.git"
+    "url": "git+https://github.com/kelchenn/React-Blog.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kelchenn/React-Project/issues"
+    "url": "https://github.com/kelchenn/React-Blog/issues"
   },
-  "homepage": "https://github.com/kelchenn/React-Project#readme",
+  "homepage": "https://github.com/kelchenn/React-Blog#readme",
   "dependencies": {
     "react": "^18.2.0"
   }
