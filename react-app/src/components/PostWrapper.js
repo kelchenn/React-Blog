@@ -7,11 +7,11 @@ import NotFound from "./NotFound";
 const PostWrapper = ({ posts }) => {
     const [showPost, setShowPost] = useState(false);
     const [postId, setPostId] = useState({});
-    const { id } = useParams();
+    const { postSlug } = useParams();
 
     useEffect(() => {
         // find the corresponding post using the url param
-        const post = posts.find(item => item.slug === id);
+        const post = posts.find(item => item.slug === postSlug);
 
         if (post) {
             setShowPost(true);
