@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { useStorageState } from "react-storage-hooks"
 
 import "./App.css";
 import Header from "./components/Header";
@@ -11,7 +12,7 @@ import NotFound from "./components/NotFound";
 import Message from "./components/Message";
 
 const App = (props) => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useStorageState(localStorage, `state-posts`, []); // save posts to local storage
   const [message, setMessage] = useState(null);
 
   const getNewSlugFromTitle = (title) => encodeURIComponent(title.toLowerCase().split(" ").join("-"));
