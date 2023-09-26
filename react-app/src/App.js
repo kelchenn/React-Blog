@@ -38,6 +38,14 @@ const updatePost = (post) => {
   setFlashMessage(`updated`);
 };
 
+const deletePost = (post) => {
+  if (window.confirm("Delete this post?")) {
+    const updatedPosts = posts.filter((p) => p.id !== post.id);
+    setPosts(updatedPosts);
+    setFlashMessage(`deleted`);
+  }
+};
+
   const setFlashMessage = (message) => {
     setMessage(message);
     setTimeout(() => {
@@ -54,7 +62,11 @@ const updatePost = (post) => {
         <Routes>
           {/* check if we are on the main route of the site (locally http://localhost:3000/),
           if we are, call <Posts/> component */}
-          <Route exact = { true } path = "/" element = {<Posts posts = { posts }/>} />
+          <Route 
+            exact = { true } 
+            path = "/" 
+            element = {<Posts posts = { posts } deletePost = { deletePost }/>} 
+          />
 
           <Route 
             path = "/post/:postSlug" 
@@ -62,7 +74,8 @@ const updatePost = (post) => {
           />
 
           <Route
-            exact = { true } path = "/new" 
+            exact = { true } 
+            path = "/new" 
             element = {<PostForm 
               addNewPost = { addNewPost } 
               post = {{ id: 0, slug: "", title: "", content: ""}}
