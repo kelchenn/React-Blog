@@ -10,6 +10,7 @@ import EditPostWrapper from "./components/EditPostWrapper";
 import PostForm from "./components/PostForm";
 import NotFound from "./components/NotFound";
 import Message from "./components/Message";
+import Login from "./components/Login";
 
 const App = (props) => {
   const [posts, setPosts] = useStorageState(localStorage, `state-posts`, []); // save posts to local storage
@@ -86,6 +87,13 @@ const deletePost = (post) => {
           <Route 
             path = "/edit/:postSlug"
             element = {<EditPostWrapper updatePost = { updatePost } posts = { posts }/>}> 
+          </Route>
+
+          <Route
+            exact = { true } 
+            path = "/login" 
+            element = { <Login/> }
+          >
           </Route>
 
           <Route path = "*" element = { <NotFound/> }/>
