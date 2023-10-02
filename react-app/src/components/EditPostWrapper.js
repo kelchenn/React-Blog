@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { useParams, Navigate } from "react-router-dom";
 
 import PostForm from "./PostForm";
-import Posts from "./Posts";
+import UserContext from "../context/UserContext";
 
 const EditPostWrapper = ({ updatePost, posts }) => {
+    const { user } = useContext(UserContext);
     const showPost = useRef(false)
     const [postId, setPostId] = useState({});
     const { postSlug } = useParams();
@@ -24,7 +25,12 @@ const EditPostWrapper = ({ updatePost, posts }) => {
 
     return (
         <div>
-            {showPost ? (<PostForm updatePost = { updatePost } post = { postId }/>) : (<Navigate to = "/"/>)}
+            {showPost ? 
+                ( user.isAuthenticated ? 
+                    (<PostForm updatePost = { updatePost } post = { postId }/>
+                    ) : (<Navigate to = "/login"/>)
+                ) : (<Navigate to = "/"/>
+            )}
         </div>
     );
     

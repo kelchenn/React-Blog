@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import UserContext from "../context/UserContext";
 
 const Login = (props) => {
+    const { onLogin } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogin = (event) => {
         event.preventDefault();
-        console.log(email, password);
+        onLogin(email, password);
     };
 
     return (
